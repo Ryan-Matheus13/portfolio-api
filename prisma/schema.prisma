@@ -12,3 +12,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Project {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  name        String
+  description String?
+  demoLink    String?
+  photos      Image[]
+  updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  url       String
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id])
+  updatedAt DateTime @updatedAt
+}
