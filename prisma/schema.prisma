@@ -14,16 +14,16 @@ datasource db {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  createdAt   DateTime @default(now())
+  id          String         @id @default(uuid())
+  createdAt   DateTime       @default(now())
   name        String
   description String?
   demoLink    String?
-  photos      Image[]
-  updatedAt   DateTime @updatedAt
+  photos      ProjectImage[]
+  updatedAt   DateTime       @updatedAt
 }
 
-model Image {
+model ProjectImage {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   url       String
